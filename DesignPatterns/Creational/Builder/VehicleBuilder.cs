@@ -38,7 +38,7 @@ namespace DesignPatterns.Creational.Builder
 
         public Vehicle Build()
         {
-            return _vehicle;
+            return (Vehicle)_vehicle.Clone();
         }
     }
 }

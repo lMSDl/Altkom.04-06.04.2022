@@ -23,16 +23,20 @@ namespace DesignPatterns.Creational.Builder
             //vehicle = builder.Build();
 
             //fluent api
-            vehicle = new VehicleBuilder()
+            var builder = new VehicleBuilder()
             .SetWheels(4)
             .SetDoors(5)
             .SetSeats(4)
             .SetTrunkCapacity(500)
-            .SetEnginePower(100)
-            .Build();
+            .SetEnginePower(100);
 
-            vehicle = new Vehicle() { Wheels = 4, Doors = 5, Seats = 4, TrunkCapacity = 500, EnginePower = 100 };
+            vehicle = builder.Build();
+            //vehicle = new Vehicle() { Wheels = 4, Doors = 5, Seats = 4, TrunkCapacity = 500, EnginePower = 100 };
+            Console.WriteLine(vehicle);
+            vehicle.EnginePower = 150;
+            Console.WriteLine(vehicle);
 
+            vehicle = builder.Build();
             Console.WriteLine(vehicle);
         }
     }
