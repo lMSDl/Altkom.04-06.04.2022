@@ -6,7 +6,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Creational.FactoryMethod.Client.Execute();
+            Creational.AbstractFactory.Client.Execute();
             Console.ReadLine();
         }
     }
