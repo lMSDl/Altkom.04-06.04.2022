@@ -33,7 +33,7 @@ namespace DesignPatterns.Creational.FactoryMethod
             //        elevatorOperation = new ElevatorGoTo();
             //        break;
             //}
-            elevatorOperation = (IElevatorOperation).CreateInstance(AppDomain.CurrentDomain.GetAssemblies()
+            elevatorOperation = (IElevatorOperation)Activator.CreateInstance(AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(x => x.GetTypes())
                 .Where(x => !x.IsInterface)
                 .Where(x => typeof(IElevatorOperation).IsAssignableFrom(x))
