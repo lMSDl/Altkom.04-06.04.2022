@@ -20,13 +20,9 @@ namespace DesignPrinciples.Services
 
         public bool Charge(int id, float amount)
         {
-            var account = PaymentAccounts.SingleOrDefault(x => x.Id == id);
-            if (account == null)
-            {
-                return false;
-            }
-
-            if (account.Income - account.Outcome + account.AllowedDebit < amount)
+            PaymentAccount account = FindById(id);
+            var balace = GetBalance(id) + account?.AllowedDebit;
+            if (!balace.HasValue || balace.Value < amount)
             {
                 return false;
             }
@@ -35,20 +31,25 @@ namespace DesignPrinciples.Services
             return true;
         }
 
+        private PaymentAccount FindById(int id)
+        {
+            return PaymentAccounts.SingleOrDefault(x => x.Id == id);
+        }
+
         public void Fund(int id, float amount)
         {
-            var customer = PaymentAccounts.Where(x => x.Id == id).SingleOrDefault();
-            if (customer == null)
+            var account = FindById(id); ;
+            if (account == null)
             {
                 return;
             }
 
-            customer.Income += amount;
+            account.Income += amount;
         }
 
         public float? GetBalance(int id)
         {
-            var account = PaymentAccounts.Where(x => x.Id == id).SingleOrDefault();
+            var account = FindById(id);
             return account?.Income - account?.Outcome;
         }
     }
