@@ -6,15 +6,19 @@ namespace DesignPrinciples.Services
 {
     public class PaymentService
     {
-        
         public bool Charge(Customer customer, float amount)
         {
-            return customer.PaymentAccount?.Charge(amount) ?? false;
+            return Charge(customer.PaymentAccount, amount);
         }
 
-        public void Fund(Customer customer, float amount)
+        public bool Charge(PaymentAccount paymentAccount, float amount)
         {
-            customer.PaymentAccount?.Fund(amount);
+            return paymentAccount?.Charge(amount) ?? false;
+        }
+
+        public void Fund(PaymentAccount paymentAccount, float amount)
+        {
+            paymentAccount?.Fund(amount);
         }
 
     }
