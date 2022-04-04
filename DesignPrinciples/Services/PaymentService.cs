@@ -11,14 +11,7 @@ namespace DesignPrinciples.Services
         public bool Charge(int id, float amount)
         {
             PaymentAccount account = FindById(id);
-            var balace = GetBalance(id) + account?.AllowedDebit;
-            if (!balace.HasValue || balace.Value < amount)
-            {
-                return false;
-            }
-
-            account.Outcome += amount;
-            return true;
+            return account?.Charge(amount) ?? false;
         }
 
         private PaymentAccount FindById(int id)
@@ -29,18 +22,8 @@ namespace DesignPrinciples.Services
         public void Fund(int id, float amount)
         {
             var account = FindById(id); ;
-            if (account == null)
-            {
-                return;
-            }
-
-            account.Income += amount;
+            account?.Fund(amount);
         }
 
-        public float? GetBalance(int id)
-        {
-            var account = FindById(id);
-            return account?.Income - account?.Outcome;
-        }
     }
 }
