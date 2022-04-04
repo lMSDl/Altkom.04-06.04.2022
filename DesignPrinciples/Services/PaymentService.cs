@@ -6,23 +6,15 @@ namespace DesignPrinciples.Services
 {
     public class PaymentService
     {
-        private ICollection<PaymentAccount> PaymentAccounts { get; } = new List<PaymentAccount> { new PaymentAccount(1), new PaymentAccount(2), new PaymentAccount(3), new PaymentAccount(4), new PaymentAccount(5) };
-
-        public bool Charge(int id, float amount)
+        
+        public bool Charge(Customer customer, float amount)
         {
-            PaymentAccount account = FindById(id);
-            return account?.Charge(amount) ?? false;
+            return customer.PaymentAccount?.Charge(amount) ?? false;
         }
 
-        private PaymentAccount FindById(int id)
+        public void Fund(Customer customer, float amount)
         {
-            return PaymentAccounts.SingleOrDefault(x => x.Id == id);
-        }
-
-        public void Fund(int id, float amount)
-        {
-            var account = FindById(id); ;
-            account?.Fund(amount);
+            customer.PaymentAccount?.Fund(amount);
         }
 
     }
