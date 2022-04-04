@@ -23,6 +23,10 @@ namespace DesignPatterns.Creational.FactoryMethod
              action = "GoTo";
             elevatorOperation = elevator.CreateOperation(action);
             elevator.Execute(elevatorOperation, 3);
+
+            action = "OpenDoor";
+            elevatorOperation = elevator.CreateOperation(action);
+            elevator.Execute(elevatorOperation, 3);
         }
     }
 }

@@ -20,19 +20,24 @@ namespace DesignPatterns.Creational.FactoryMethod
             if(_cache.TryGetValue(action, out var elevatorOperation)) {
                 return elevatorOperation;
             }
-            
-            switch (nameof(Elevator) + action)
-            {
-                case nameof(ElevatorDown):
-                    elevatorOperation = new ElevatorDown();
-                    break;
-                case nameof(ElevatorUp):
-                    elevatorOperation = new ElevatorUp();
-                    break;
-                case nameof(ElevatorGoTo):
-                    elevatorOperation = new ElevatorGoTo();
-                    break;
-            }
+
+            //switch (nameof(Elevator) + action)
+            //{
+            //    case nameof(ElevatorDown):
+            //        elevatorOperation = new ElevatorDown();
+            //        break;
+            //    case nameof(ElevatorUp):
+            //        elevatorOperation = new ElevatorUp();
+            //        break;
+            //    case nameof(ElevatorGoTo):
+            //        elevatorOperation = new ElevatorGoTo();
+            //        break;
+            //}
+            elevatorOperation = (IElevatorOperation).CreateInstance(AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(x => x.GetTypes())
+                .Where(x => !x.IsInterface)
+                .Where(x => typeof(IElevatorOperation).IsAssignableFrom(x))
+                .Single(x => x.Name.Contains(action)));
 
             _cache[action] = elevatorOperation;
 
