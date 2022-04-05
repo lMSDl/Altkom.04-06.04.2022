@@ -6,7 +6,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Creational.Singleton.Client.Execute();
+            Creational.ObjectPool.Client.Execute();
             Console.ReadLine();
         }
     }
