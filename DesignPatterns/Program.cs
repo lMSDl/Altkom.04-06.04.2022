@@ -6,7 +6,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Structural.Decorator.Client.Execute();
+            Structural.Facade.I.Client.Execute();
             Console.ReadLine();
         }
     }

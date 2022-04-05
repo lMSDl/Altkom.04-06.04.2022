@@ -23,12 +23,18 @@ namespace DesignPatterns.Creational.Builder
             //vehicle = builder.Build();
 
             //fluent api
-            var builder = new VehicleBuilder()
-            .SetWheels(4)
-            .SetDoors(5)
-            .SetSeats(4)
-            .SetTrunkCapacity(500)
-            .SetEnginePower(100);
+            var builder = new VehicleBuilderFacade()
+                            .Components
+                                .SetWheels(4)
+                                .SetDoors(5)
+                            .ManufacturingInfo
+                                .SetManufacturer("Altkom")
+                                .SetModel("ASA112")
+                                .SetProductionDate(new DateTime(2012, 12, 1))
+                             .Components
+                                .SetSeats(4)
+                                .SetTrunkCapacity(500)
+                                .SetEnginePower(100);
 
             vehicle = builder.Build();
             //vehicle = new Vehicle() { Wheels = 4, Doors = 5, Seats = 4, TrunkCapacity = 500, EnginePower = 100 };
