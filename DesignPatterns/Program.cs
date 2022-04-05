@@ -6,7 +6,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Structural.Proxy.Client.Execute();
+            Behavioral.ChainOfResponsibility.Client.Execute();
             Console.ReadLine();
         }
     }
