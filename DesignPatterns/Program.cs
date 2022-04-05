@@ -6,7 +6,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Creational.ObjectPool.Client.Execute();
+            Structural.Adapter.II.Client.Execute();
             Console.ReadLine();
         }
     }
