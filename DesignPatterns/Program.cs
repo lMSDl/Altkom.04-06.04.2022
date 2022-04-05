@@ -6,7 +6,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Behavioral.ChainOfResponsibility.Client.Execute();
+            Behavioral.Command.Client.Execute();
             Console.ReadLine();
         }
     }
