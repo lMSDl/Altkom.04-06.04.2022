@@ -6,7 +6,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Behavioral.Strategy.Client.Execute();
+            Behavioral.TemplateMethod.Client.Execute();
             Console.ReadLine();
         }
     }
