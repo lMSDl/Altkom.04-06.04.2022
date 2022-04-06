@@ -6,7 +6,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Behavioral.Visitor.II.Client.Execute();
+            Behavioral.NullObject.Client.Execute();
             Console.ReadLine();
         }
     }
