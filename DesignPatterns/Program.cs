@@ -6,7 +6,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Behavioral.Observer.Client.Execute();
+            Behavioral.State.Client.Execute();
             Console.ReadLine();
         }
     }
